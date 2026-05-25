@@ -1,12 +1,13 @@
 import { ImageResponse } from "next/og";
 
-// Replaces the default Next.js favicon with the brand mark — Hostinger
-// violet rounded square + white chat-square glyph — matching the
-// sidebar logo in `src/components/layout/sidebar.tsx`. Next.js renders
-// this at build time and auto-injects <link rel="icon"> into <head>.
-//
-// This route takes precedence over src/app/favicon.ico, which is the
-// Next.js default and can stay on disk harmlessly (or be removed).
+/**
+ * Bijou favicon — Deep Green (#0d3d3d) rounded square with a Gold
+ * WhatsApp-style chat icon, matching the brand spec locked in
+ * STRATEGY-2026-05-15.md (Deep Green + Gold, no purple).
+ *
+ * Next.js renders this at build time and auto-injects <link rel="icon">
+ * into <head>. Takes precedence over any favicon.ico on disk.
+ */
 
 export const runtime = "edge";
 export const size = { width: 32, height: 32 };
@@ -22,22 +23,28 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#7c3aed", // violet-600 (Hostinger-aligned purple)
+          background: "#0d3d3d", /* Bijou Deep Green */
           borderRadius: 6,
+          border: "1px solid rgba(212,175,55,0.4)",
         }}
       >
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#ffffff"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+        {/* Gold "B" lettermark */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 20,
+            height: 20,
+            color: "#d4af37", /* Bijou Gold */
+            fontWeight: 800,
+            fontSize: 18,
+            fontFamily: "Georgia, serif",
+            lineHeight: 1,
+          }}
         >
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-        </svg>
+          B
+        </div>
       </div>
     ),
     { ...size },

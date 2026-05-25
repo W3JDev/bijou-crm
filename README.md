@@ -1,100 +1,110 @@
-# wacrm — CRM Template for WhatsApp
+# Bijou CRM
 
-> Self-hostable CRM template for WhatsApp® — shared inbox, contacts,
-> sales pipelines, broadcasts, and no-code automations. Fork it, brand
-> it, host it.
+> **WhatsApp AI dashboard for Malaysian and GCC SMEs.**
+> Built on top of [wacrm](https://github.com/ArnasDon/wacrm) (MIT) — open-source CRM template by Arnas Donauskas.
+> Bijou customisations: Deep Green + Gold brand identity, Manglish AI replies, TRACE empathy pipeline, multi-tier WhatsApp adapter.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-violet.svg)](./LICENSE)
-[![CI](https://github.com/ArnasDon/wacrm/actions/workflows/ci.yml/badge.svg)](https://github.com/ArnasDon/wacrm/actions/workflows/ci.yml)
-[![Next.js 16](https://img.shields.io/badge/Next.js-16-black?logo=nextdotjs)](https://nextjs.org)
-[![Supabase](https://img.shields.io/badge/Supabase-Postgres%20%2B%20Auth-3ecf8e?logo=supabase)](https://supabase.com)
-[![Stars](https://img.shields.io/github/stars/ArnasDon/wacrm?style=social)](https://github.com/ArnasDon/wacrm/stargazers)
+[![Brand](https://img.shields.io/badge/brand-Deep%20Green%20%2B%20Gold-%230d3d3d?labelColor=0d3d3d&color=d4af37)](https://mybijou.xyz)
+[![Stack](https://img.shields.io/badge/stack-Next.js%2016%20%2B%20Supabase-%230d3d3d?labelColor=0d3d3d&color=d4af37)](https://nextjs.org)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-The marketing site and self-host docs live in a separate repo:
-[ArnasDon/wacrm-site](https://github.com/ArnasDon/wacrm-site)
-([wacrm.tech](https://wacrm.tech)). This repo is the product —
-clone or fork it to run your own CRM.
+---
 
-## What you get out of the box
+## What is Bijou CRM?
 
-- **Shared inbox** on the official WhatsApp Business API — multiple
-  agents working one number, per-conversation assignment, status, and
-  notes.
-- **Contacts + tags + custom fields**, CSV import, deduplication.
-- **Sales pipelines** (Kanban) with deals linked to conversations.
-- **Broadcasts** with Meta-approved templates, delivery + read
-  tracking, per-recipient variable substitution.
-- **No-code automations** — triggers on inbound messages, new
-  contacts, keywords, or schedule; conditional branches, waits,
-  tags, webhooks. Visual builder.
-- **Real-time dashboard** — response times, daily volume, pipeline
-  value, cross-module activity feed.
-- **Account management** — email, password, avatar, global sign-out.
+Bijou CRM is the customer-facing dashboard for [Bijou AI](https://mybijou.xyz). It gives SME customers:
 
-## Why fork this?
+- **Shared WhatsApp inbox** — unified across team members
+- **Contacts & deals** — CRM pipeline for leads and customers
+- **Broadcasts** — bulk WhatsApp campaigns with scheduling
+- **No-code automations** — trigger + action flows including Bijou AI replies
+- **AI-powered responses** — TRACE empathy pipeline (ASI → Humanizer → ERS → routing)
 
-This is a **template**, not a product. Forking means you get:
+### Tier gating
 
-- **Full ownership** — your code, your Supabase project, your domain,
-  your data. No SaaS lock-in, no seat pricing, no trust dance.
-- **Full customisation** — add the fields your team needs, remove the
-  modules you don't, redesign anything. The stack is boring on
-  purpose (Next.js + Supabase + Tailwind) so the learning curve is
-  short.
-- **Zero ops to start** — Hostinger Managed Node.js deploys a fork in
-  a few clicks. No Docker, no Kubernetes, no infra team needed.
-- **Real security primitives** — token encryption (AES-256-GCM), RLS
-  on every table, HMAC-verified webhooks, CSP, rate limiting, CI
-  typecheck/build on every PR.
+| Tier | Price | WhatsApp path |
+|---|---|---|
+| **Pro** (SME) | RM 299/mo | GOWA Bridge (no-WABA flat rate) |
+| **Enterprise** | RM 999/mo | Official Meta WABA (Cloud API) |
 
-Not a framework. Not an SDK. A concrete, working CRM you can stand up
-in an afternoon and make yours.
+Same UI. Same AI brain. Different WhatsApp adapter.
 
-## Quick start
+---
+
+## Tech Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 16 + React 19 |
+| Styling | Tailwind v4 + shadcn/ui (base-nova) |
+| Fonts | Inter (sans) + Crimson Pro (display) |
+| Data | Supabase Postgres + Auth + RLS |
+| WhatsApp | Meta Cloud API (Enterprise) / GOWA Bridge (Pro) |
+| Toasts | sonner — Manglish copy via `src/lib/toast.ts` |
+
+### Brand tokens
+
+```css
+--bijou-green:     #0d3d3d  /* primary — buttons, sidebar, focus rings */
+--bijou-green-2:   #0a2e2e  /* hover/deep */
+--bijou-gold:      #d4af37  /* CTAs, accents, badges, charts */
+--bijou-gold-soft: #e8c860  /* hover gold */
+--bijou-cream:     #faf7f0  /* light surface tint */
+```
+
+---
+
+## Getting Started
 
 ```bash
-# Fork on GitHub first: https://github.com/ArnasDon/wacrm → Fork
-git clone https://github.com/<your-username>/wacrm.git
-cd wacrm
+git clone https://github.com/W3JDev/bijou-crm.git
+cd bijou-crm
 npm install
-cp .env.local.example .env.local   # fill in Supabase + Meta creds
+cp .env.local.example .env.local
+# Fill in your Supabase + WhatsApp credentials
 npm run dev
 ```
 
-Open <http://localhost:3000>. You'll be redirected to `/login` (or
-`/dashboard` if already signed in).
+Open [http://localhost:3000](http://localhost:3000).
 
-## Documentation
+---
 
-Full self-host documentation — Supabase migrations, WhatsApp Business
-API config, and production deploy — lives at
-**[wacrm.tech/docs](https://wacrm.tech/docs)**
-(source: [ArnasDon/wacrm-site](https://github.com/ArnasDon/wacrm-site)).
+## Development
 
-Key pages:
-- [Getting started](https://wacrm.tech/docs/getting-started)
-- [Supabase setup](https://wacrm.tech/docs/supabase-setup)
-- [WhatsApp setup](https://wacrm.tech/docs/whatsapp-setup)
-- [Environment variables](https://wacrm.tech/docs/environment-variables)
-- [Deploy on Hostinger](https://wacrm.tech/docs/deployment-hostinger)
-- [Architecture](https://wacrm.tech/docs/architecture)
-- [Troubleshooting](https://wacrm.tech/docs/troubleshooting)
+```bash
+npm run dev          # Next.js dev server
+npm run build        # Production build
+npm run typecheck    # TypeScript check
+npm run test         # Vitest unit tests
+npm run lint         # ESLint
+```
 
-## Stack
+### Toast / error messages
 
-- **App** — Next.js 16 (App Router), React 19, TypeScript, Tailwind v4.
-- **Data** — Supabase (Postgres + Auth + Storage + RLS).
-- **WhatsApp** — Meta Cloud API (official WhatsApp Business API).
+Use `bijouToast` and the presets in `src/lib/toast.ts` — **not** raw `sonner` calls. This keeps all user-facing strings Manglish-voiced and consistently styled.
 
-## Contributing
+```ts
+import { toastError, toastSuccess } from "@/lib/toast";
 
-This is a template, not a collaborative product — the expected flow is
-fork → customise → deploy, **not** upstream contribution. Bug reports
-and security issues are welcome; feature PRs often belong in your fork
-rather than here. Details in
-[`CONTRIBUTING.md`](./CONTRIBUTING.md) and
-[`.github/SECURITY.md`](./.github/SECURITY.md).
+// Instead of: toast.error("Something went wrong")
+toastError.serverHiccup(); // "Aiyo, server hiccup. Try again boss?"
 
-## License
+// Instead of: toast.success("Saved")
+toastSuccess.saved();      // "Saved already! Boleh!"
+```
 
-[MIT](./LICENSE). Fork it, brand it, host it.
+---
+
+## Attribution
+
+This project is a fork of **[wacrm](https://github.com/ArnasDon/wacrm)** by **Arnas Donauskas**, released under the MIT license. The original wacrm provides the CRM scaffolding (inbox, contacts, deals, broadcasts, automations). Bijou's additions are layered on top: brand identity, AI pipeline, multi-tier WhatsApp adapter, and Manglish voice.
+
+The MIT `LICENSE` file is preserved unmodified. Feature PRs belong in this fork per the upstream author's stated intent.
+
+---
+
+## Deployment
+
+The production dashboard is targeted at `app.mybijou.xyz`. See `BIJOU-CRM-INTEGRATION-PLAN.md` in [bijou-agent-swarm](https://github.com/W3JDev/bijou-agent-swarm) for the full phased rollout plan.
+
+> **G3 gate**: Production deploys require Jewel approval. Do not push directly to production without sign-off.
