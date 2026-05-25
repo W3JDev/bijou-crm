@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 44" fill="none" role="img" aria-label="Bijou AI">
+  <!-- Gem / diamond mark -->
+  <path d="M10 22 L19 7 L28 7 L37 22 L19 37 Z" fill="#0d3d3d" stroke="#d4af37" stroke-width="1.5"/>
+  <path d="M19 13 L27 22 L19 31 L11 22 Z" fill="#d4af37" opacity="0.75"/>
+  <!-- Wordmark: Bijou -->
+  <text
+    x="46"
+    y="31"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="24"
+    font-weight="700"
+    fill="#d4af37"
+    letter-spacing="-0.3"
+  >Bijou</text>
+  <!-- Separator dot -->
+  <circle cx="142" cy="29" r="2.5" fill="#d4af37" opacity="0.55"/>
+  <!-- AI suffix -->
+  <text
+    x="149"
+    y="31"
+    font-family="-apple-system, Arial, sans-serif"
+    font-size="13"
+    font-weight="500"
+    fill="#faf7f0"
+    opacity="0.65"
+    letter-spacing="1.5"
+  >AI</text>
+</svg>
